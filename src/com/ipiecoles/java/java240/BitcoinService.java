@@ -1,12 +1,23 @@
 package com.ipiecoles.java.java240;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import java.io.IOException;
 
+//@Service
 public class BitcoinService {
 
     private Double rate = null;
 
     private Boolean forceRefresh = false;
+
+    @Autowired
+    private WebPageManager webPageManager;
+
+    public BitcoinService(Boolean forceRefresh) {
+        this.forceRefresh = forceRefresh;
+    }
 
     /**
      * Méthode qui renvoie le cours du Bitcoin
@@ -20,7 +31,6 @@ public class BitcoinService {
         }
 
         System.out.println("Récupération du cours du bitcoin sur site distant");
-        WebPageManager webPageManager = new WebPageManager();
 
         String apiResponse = webPageManager.getPageContents("https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=EUR");
         apiResponse = apiResponse.replace("{\"EUR\":","");
