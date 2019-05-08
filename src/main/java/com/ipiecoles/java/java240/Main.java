@@ -1,18 +1,23 @@
 package com.ipiecoles.java.java240;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 
-import java.io.IOException;
+import javax.annotation.Resource;
 import java.util.Scanner;
 
-public class Main {
+@Component
+public class Main implements CommandLineRunner {
 
-    public static void main(String[] args) throws IOException {
+    @Resource(name = "refreshBitCoinService")
+    private BitcoinService bitcoinService;
 
-        ApplicationContext ctx = new AnnotationConfigApplicationContext(SpringApplication.class);
-        ProduitManager pm = ctx.getBean(ProduitManager.class);
-        BitcoinService bitcoinService = ctx.getBean("refreshBitCoinService", BitcoinService.class);
+    @Autowired
+    private ProduitManager produitManager;
+
+    @Override
+    public void run(String... args) throws Exception {
 
         System.out.println("Bienvenue !");
         while(true){
@@ -31,17 +36,17 @@ public class Main {
                     System.out.println("1 BTC = " + bitcoinService.getBitcoinRate() + " €");
                     break;
                 case 2:
-                    pm.ajouterProduit();
+                    produitManager.ajouterProduit();
                     break;
                 case 3:
-                    pm.afficherTousLesProduits();
+                    produitManager.afficherTousLesProduits();
                     break;
                 case 4:
                     System.out.println("Quel numéro de produit ?");
-                    pm.afficherDetailProduit(scanner.nextInt());
+                    produitManager.afficherDetailProduit(scanner.nextInt());
                     break;
                 case 5:
-                    pm.initialiserCatalogue();
+                    produitManager.initialiserCatalogue();
                     break;
                 case 0:
                     System.out.println("Au revoir !");

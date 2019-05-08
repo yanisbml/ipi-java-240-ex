@@ -1,16 +1,13 @@
 package com.ipiecoles.java.java240;
 
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@Configuration
-@ComponentScan(basePackages = "com.ipiecoles.java.java240")
-@PropertySource("classpath:application.properties")
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.*;
+
+@SpringBootApplication
 public class SpringApplication {
+
     @Value("${bitcoinService.forceRefresh}")
     private Boolean forceRefresh;
 
@@ -19,9 +16,13 @@ public class SpringApplication {
         return new BitcoinService(forceRefresh);
     }
     @Bean(name = "cacheBitCoinService")
-    //@Primary
-    @Qualifier("cache")
+    @Primary
     public BitcoinService cacheBitcoinService(){
         return new BitcoinService(false);
     }
+
+    public static void main(String[] args) {
+        org.springframework.boot.SpringApplication.run(SpringApplication.class, args);
+    }
+
 }
