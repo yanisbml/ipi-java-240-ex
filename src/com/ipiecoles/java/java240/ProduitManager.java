@@ -1,6 +1,7 @@
 package com.ipiecoles.java.java240;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -18,7 +19,9 @@ public class ProduitManager {
     @Autowired
     private WebPageManager webPageManager;
 
-    @Resource(name = "cacheBitCoinService")
+    //@Resource(name = "cacheBitCoinService")
+    @Autowired
+    @Qualifier("cache")
     private BitcoinService bitcoinService;
 
     /**
