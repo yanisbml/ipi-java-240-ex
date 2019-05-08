@@ -16,11 +16,12 @@ public class ProduitManager {
     public void ajouterProduit(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Entrez l'intitulé du produit");
-        String intitule = scanner.next();
+        String intitule = scanner.nextLine();
         if(produits.stream().
                 map(Produit::getIntitule).
                 anyMatch(s -> s.equals(intitule))){
             System.out.println("Ce produit existe déjà dans le catalogue !");
+            return;
         }
         System.out.println("Entrez le prix du produit");
         Double prixEuro = scanner.nextDouble();
