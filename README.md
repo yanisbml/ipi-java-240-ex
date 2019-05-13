@@ -33,5 +33,5 @@ L'objectif de ce TP est de comprendre l'intérêt d'un framework comme Spring en
 
 ## Spring Boot
 
-- Créez une autre branche `spring-auto` à partir de `spring-auto`
+- Créez une autre branche `spring-boot` à partir de `spring-auto`
 - Remplacez votre `pom.xml` par un `pom.xml` utilisant Spring Boot et convertissez votre application Spring normale en application Spring Boot console. Constatez la simplification (relative) du code et les possibilités maintenant à votre disposition !
