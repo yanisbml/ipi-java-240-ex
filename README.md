@@ -26,10 +26,10 @@ L'objectif de ce TP est de comprendre l'intérêt d'un framework comme Spring en
 ## Automatisation !
 
 - Créez une autre branche `spring-auto` à partir de `spring`
-- Remplacez la déclaration manuelle des beans dans `SpringApplication` par un scan automatique de Spring en ajoutant les annotations nécessaires sur les différentes classes.
+- Remplacez la déclaration manuelle des beans dans `SpringConfig` par un scan automatique de Spring en ajoutant les annotations nécessaires sur les différentes classes.
 - Remplacez les injections effectuées manuellement par de l'autowiring.
 - Vérifier que l'application fonctionne toujours.
-- Créez un fichier de `properties` et définissez une propriété `bitcoinService.cache` valorisée à `false` et utilisez cette propriété pour construire le bean `BitcoinService` utilisé dans la classe `Main`. Constatez que cela fonctionne toujours et qu'en redémarrant votre application après avoir passé cette propriété à `true`, le cache est bien utilisé.
+- Créez un fichier de `properties` et définissez une propriété `bitcoinService.forceRefresh` valorisée à `false` et utilisez cette propriété pour construire le bean `BitcoinService` utilisé dans la classe `Main`. Constatez que cela fonctionne toujours et qu'en redémarrant votre application après avoir passé cette propriété à `true`, le cache est bien utilisé. Faites de même avec les autres *constantes* de l'application qu'il vous semblerait intéressant d'externaliser.
 
 ## Spring Boot
 
